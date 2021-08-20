@@ -18,7 +18,7 @@ export class AppComponent implements OnInit {
   personal_step = false;
   address_step = false;
   education_step = false;
-  step = 2;
+  step = 1;
 
   languages: string[] = ['Portugese', 'English'];
   // defaultLanguage: string = "Portugese";
@@ -57,11 +57,11 @@ export class AppComponent implements OnInit {
   get personal() {
     return this.personalDetails.controls;
   }
-  get education() {
-    return this.educationalDetails.controls;
-  }
   get address() {
     return this.addressDetails.controls;
+  }
+  get education() {
+    return this.educationalDetails.controls;
   }
 
   next() {

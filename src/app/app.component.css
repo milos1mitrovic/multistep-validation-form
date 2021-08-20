@@ -10,7 +10,7 @@
   border: 0 none;
   border-radius: 0px;
   box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
-  padding: 80px;
+  padding: 60px 80px;
   box-sizing: border-box;
   /* width: 60%; */
   width: 600px;
@@ -104,7 +104,7 @@
 
 .msform label {
   display: inline-block;
-  margin-top: 8px;
+  margin-top: 15px;
   font-size: 14px;
   font-weight: bold;
 }
