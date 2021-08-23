@@ -4,13 +4,13 @@
       <!-- progressbar -->
 
       <ul id="progressbar">
-        <li [ngClass]="step >= 1 ? 'active' : 'inactive'" (click)="previous()">
+        <li [ngClass]="step >= 1 ? 'active' : 'inactive'" (click)="goTo(1, personalDetails)">
           Personal Details
         </li>
-        <li [ngClass]="step >= 2 ? 'active' : 'inactive'" (click)="next()">
+        <li [ngClass]="step >= 2 ? 'active' : 'inactive'" (click)="goTo(2, addressDetails)">
           Address Details
         </li>
-        <li [ngClass]="step == 3 ? 'active' : 'inactive'" (click)="next()">
+        <li [ngClass]="step == 3 ? 'active' : 'inactive'" (click)="goTo(3, registerDetails)">
           Account Setup
         </li>
       </ul>
@@ -174,9 +174,7 @@
         />
         <div *ngIf="address_step && addressDetails.controls.address.errors">
           <span
-            *ngIf="
-              address.address.errors?.required && address.address.touched
-            "
+            *ngIf="address.address.errors?.required && address.address.touched"
             class="required"
           >
             Address is required
@@ -194,9 +192,7 @@
         />
         <div *ngIf="address_step && addressDetails.controls.city.errors">
           <span
-            *ngIf="
-              address.city.errors?.required && address.city.touched
-            "
+            *ngIf="address.city.errors?.required && address.city.touched"
             class="required"
           >
             City is required
@@ -214,15 +210,13 @@
         />
         <div *ngIf="address_step && addressDetails.controls.zip.errors">
           <span
-            *ngIf="
-              address.zip.errors?.required && address.zip.touched
-            "
+            *ngIf="address.zip.errors?.required && address.zip.touched"
             class="required"
           >
             Zip is required
           </span>
         </div>
-        
+
         <!-- <input
           (click)="previous()"
           type="button"
@@ -242,51 +236,37 @@
 
     <!-- third fieldset -->
 
-    <form [formGroup]="addressDetails" class="msform">
+    <form [formGroup]="registerDetails" class="msform">
       <fieldset *ngIf="step == 3">
-        <h2 class="fs-title">Educational Details</h2>
-        <input
-          type="text"
-          formControlName="highest_qualification"
-          placeholder="Highest Qualification"
-        />
+        <h2 class="fs-title">Register Details</h2>
+        <label for="taxpayerNumber">Taxpayer Number</label>
+        <input type="text" id="taxpayerNumber" formControlName="taxpayerNumber" />
         <div
           *ngIf="
-            education_step &&
-            educationalDetails.controls.highest_qualification.errors
+            register_step && registerDetails.controls.taxpayerNumber.errors
           "
         >
-          <div *ngIf="education.highest_qualification.errors?.required">
-            Highest qualification is required
-          </div>
+          <span *ngIf="register.taxpayerNumber.errors?.required && register.taxpayerNumber.touched">
+            Taxpayer number is required
+          </span>
         </div>
-        <input
-          type="text"
-          formControlName="university"
-          placeholder="University"
-        />
-        <div
-          *ngIf="
-            education_step && educationalDetails.controls.university.errors
-          "
-        >
-          <div *ngIf="education.university.errors?.required">
-            University is required
-          </div>
+
+        <label for="birthDate">Birth Date</label>
+        <input type="date" id="birthDate" formControlName="birthDate" />
+        <div *ngIf="register_step && registerDetails.controls.birthDate.errors">
+          <span *ngIf="register.birthDate.errors?.required && register.birthDate.touched">
+            BirthDate is required
+          </span>
         </div>
-        <input
-          type="text"
-          formControlName="total_marks"
-          placeholder="Total Marks"
-        />
+
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" formControlName="phoneNumber" />
         <div
-          *ngIf="
-            education_step && educationalDetails.controls.total_marks.errors
-          "
+          *ngIf="register_step && registerDetails.controls.phoneNumber.errors"
         >
-          <div *ngIf="education.total_marks.errors?.required">
-            Total marks is required
-          </div>
+          <span *ngIf="register.phoneNumber.errors?.required && register.phoneNumber.touched">
+            Phone Number is required
+          </span>
         </div>
         <!-- <input
           (click)="previous()"
