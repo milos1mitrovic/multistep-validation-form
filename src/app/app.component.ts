@@ -65,15 +65,15 @@ export class AppComponent implements OnInit {
     return this.registerDetails.controls;
   }
 
-  goTo(step: number, details: FormGroup) {
-    console.log(details);
-    if (details.invalid) {
-      console.log('Validation');
-      this.validateAllFormFields(details);
-      return;
-    }
-    this.step = step;
-  }
+  // goTo(step: number, details: FormGroup) {
+  //   console.log(details);
+  //   if (details.invalid) {
+  //     console.log('Validation');
+  //     this.validateAllFormFields(details);
+  //     return;
+  //   }
+  //   this.step = step;
+  // }
 
   next() {
     if (this.step == 1) {
@@ -94,26 +94,24 @@ export class AppComponent implements OnInit {
       }
       this.step = 3;
       console.log(this.step);
-    }
-    if (this.step == 3) {
+    } else if (this.step == 3) {
       console.log(this.step);
-      return;
+      if (this.registerDetails.invalid) {
+        this.validateAllFormFields(this.registerDetails);
+        return;
+      }
     }
-    console.log(this.step);
+    // console.log(this.step);
   }
   previous() {
     if (this.step == 1) {
       return;
-    }
-
-    if (this.step == 2) {
+    } else if (this.step == 2) {
       this.step--;
       this.personal_step = true;
       this.address_step = false;
       console.log(this.step);
-    }
-
-    if (this.step == 3) {
+    } else if (this.step == 3) {
       this.step--;
       this.register_step = false;
       this.address_step = true;
@@ -128,7 +126,7 @@ export class AppComponent implements OnInit {
         return;
       }
     }
-    console.log("form submitted")
+    console.log('form submitted');
   }
 
   validateAllFormFields(formGroup: FormGroup) {

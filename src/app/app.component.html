@@ -4,13 +4,16 @@
       <!-- progressbar -->
 
       <ul id="progressbar">
-        <li [ngClass]="step >= 1 ? 'active' : 'inactive'" (click)="goTo(1, personalDetails)">
+        <li [ngClass]="step >= 1 ? 'active' : 'inactive'" (click)="previous()">
           Personal Details
         </li>
-        <li [ngClass]="step >= 2 ? 'active' : 'inactive'" (click)="goTo(2, addressDetails)">
+        <li
+          [ngClass]="step >= 2 ? 'active' : 'inactive'"
+          (click)="step == 1 ? next() : previous()"
+        >
           Address Details
         </li>
-        <li [ngClass]="step == 3 ? 'active' : 'inactive'" (click)="goTo(3, registerDetails)">
+        <li [ngClass]="step == 3 ? 'active' : 'inactive'" (click)="next()">
           Account Setup
         </li>
       </ul>
@@ -240,13 +243,22 @@
       <fieldset *ngIf="step == 3">
         <h2 class="fs-title">Register Details</h2>
         <label for="taxpayerNumber">Taxpayer Number</label>
-        <input type="text" id="taxpayerNumber" formControlName="taxpayerNumber" />
+        <input
+          type="text"
+          id="taxpayerNumber"
+          formControlName="taxpayerNumber"
+        />
         <div
           *ngIf="
             register_step && registerDetails.controls.taxpayerNumber.errors
           "
         >
-          <span *ngIf="register.taxpayerNumber.errors?.required && register.taxpayerNumber.touched">
+          <span
+            *ngIf="
+              register.taxpayerNumber.errors?.required &&
+              register.taxpayerNumber.touched
+            "
+          >
             Taxpayer number is required
           </span>
         </div>
@@ -254,7 +266,11 @@
         <label for="birthDate">Birth Date</label>
         <input type="date" id="birthDate" formControlName="birthDate" />
         <div *ngIf="register_step && registerDetails.controls.birthDate.errors">
-          <span *ngIf="register.birthDate.errors?.required && register.birthDate.touched">
+          <span
+            *ngIf="
+              register.birthDate.errors?.required && register.birthDate.touched
+            "
+          >
             BirthDate is required
           </span>
         </div>
@@ -264,7 +280,12 @@
         <div
           *ngIf="register_step && registerDetails.controls.phoneNumber.errors"
         >
-          <span *ngIf="register.phoneNumber.errors?.required && register.phoneNumber.touched">
+          <span
+            *ngIf="
+              register.phoneNumber.errors?.required &&
+              register.phoneNumber.touched
+            "
+          >
             Phone Number is required
           </span>
         </div>
