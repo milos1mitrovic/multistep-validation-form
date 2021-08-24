@@ -74,6 +74,9 @@ export class AppComponent implements OnInit {
     };
     console.log(merged);
     this.onCreatePost(merged);
+    this.personalDetails.reset();
+    this.addressDetails.reset();
+    this.registerDetails.reset();
   }
 
   onCreatePost(postData: {
