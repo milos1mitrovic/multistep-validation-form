@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,7 @@ export class AppComponent implements OnInit {
   // defaultLanguage: string = "Portugese";
   countries: string[] = ['Brazil'];
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
 
   ngOnInit() {
     this.personalDetails = this.formBuilder.group({
@@ -35,6 +36,7 @@ export class AppComponent implements OnInit {
       password: ['', Validators.required],
       confirmPass: ['', Validators.required],
     });
+
     this.addressDetails = this.formBuilder.group({
       language: ['Portugese', Validators.required],
       country: ['Brazil', Validators.required],
@@ -42,6 +44,7 @@ export class AppComponent implements OnInit {
       city: ['', Validators.required],
       zip: ['', Validators.required],
     });
+
     this.registerDetails = this.formBuilder.group({
       taxpayerNumber: ['', Validators.required],
       birthDate: ['', Validators.required],
@@ -53,6 +56,51 @@ export class AppComponent implements OnInit {
       this.personal_step = true;
     }
     console.log(this.step);
+  }
+  submit() {
+    if (this.step == 3) {
+      this.register_step = true;
+      if (this.registerDetails.invalid) {
+        console.log('INVALID');
+        return;
+      }
+    }
+    // console.log(this.personalDetails.value);
+    // this.onCreatePost(this.addressDetails.value);
+    let merged = {
+      ...this.personalDetails.value,
+      ...this.addressDetails.value,
+      ...this.registerDetails.value,
+    };
+    console.log(merged);
+    this.onCreatePost(merged);
+  }
+
+  onCreatePost(postData: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    username: string;
+    password: string;
+    confirmPass: string;
+
+    language: string;
+    address: string;
+    city: string;
+    zip: string;
+
+    taxpayerNumber: string;
+    birthDate: string;
+    phoneNumber: string;
+  }) {
+    this.http
+      .post(
+        'https://multi-step-validation-acc3c-default-rtdb.firebaseio.com/user.json',
+        postData
+      )
+      .subscribe((responseData) => {
+        console.log(responseData);
+      });
   }
 
   get personal() {
@@ -117,16 +165,6 @@ export class AppComponent implements OnInit {
       this.address_step = true;
       console.log(this.step);
     }
-  }
-  submit() {
-    if (this.step == 3) {
-      this.register_step = true;
-      if (this.registerDetails.invalid) {
-        console.log('INVALID');
-        return;
-      }
-    }
-    console.log('form submitted');
   }
 
   validateAllFormFields(formGroup: FormGroup) {
