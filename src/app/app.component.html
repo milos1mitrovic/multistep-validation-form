@@ -4,16 +4,19 @@
       <!-- progressbar -->
 
       <ul id="progressbar">
-        <li [ngClass]="step >= 1 ? 'active' : 'inactive'" (click)="previous()">
+        <li [ngClass]="step >= 1 ? 'active' : 'inactive'" (click)="goTo(1)">
           Personal Details
         </li>
         <li
           [ngClass]="step >= 2 ? 'active' : 'inactive'"
-          (click)="step == 1 ? next() : previous()"
+          (click)="goTo(2, personalDetails)"
         >
           Address Details
         </li>
-        <li [ngClass]="step == 3 ? 'active' : 'inactive'" (click)="next()">
+        <li
+          [ngClass]="step == 3 ? 'active' : 'inactive'"
+          (click)="goTo(3, addressDetails)"
+        >
           Account Setup
         </li>
       </ul>

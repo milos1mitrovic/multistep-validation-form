@@ -1,4 +1,4 @@
-import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -116,16 +116,6 @@ export class AppComponent implements OnInit {
     return this.registerDetails.controls;
   }
 
-  // goTo(step: number, details: FormGroup) {
-  //   console.log(details);
-  //   if (details.invalid) {
-  //     console.log('Validation');
-  //     this.validateAllFormFields(details);
-  //     return;
-  //   }
-  //   this.step = step;
-  // }
-
   next() {
     if (this.step == 1) {
       this.address_step = true;
@@ -168,6 +158,19 @@ export class AppComponent implements OnInit {
       this.address_step = true;
       console.log(this.step);
     }
+  }
+
+  goTo(step: number, details?: any) {
+    console.log(details);
+    if (details!=null && details!= undefined)
+    {
+      if (details.invalid) {
+        console.log(details.invalid);
+        this.validateAllFormFields(details);
+        return;
+      }
+    }
+    this.step = step;
   }
 
   validateAllFormFields(formGroup: FormGroup) {
