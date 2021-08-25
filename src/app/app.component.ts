@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
   step = 1;
 
   languages: string[] = ['Portugese', 'English'];
-  // defaultLanguage: string = "Portugese";
   countries: string[] = ['Brazil'];
 
   constructor(private formBuilder: FormBuilder, private http: HttpClient) {}
@@ -61,7 +60,8 @@ export class AppComponent implements OnInit {
     if (this.step == 3) {
       this.register_step = true;
       if (this.registerDetails.invalid) {
-        console.log('INVALID');
+        // console.log('INVALID');
+        this.validateAllFormFields(this.registerDetails)
         return;
       }
     }
@@ -144,25 +144,25 @@ export class AppComponent implements OnInit {
     }
     // console.log(this.step);
   }
-  previous() {
-    if (this.step == 1) {
-      return;
-    } else if (this.step == 2) {
-      this.step--;
-      this.personal_step = true;
-      this.address_step = false;
-      console.log(this.step);
-    } else if (this.step == 3) {
-      this.step--;
-      this.register_step = false;
-      this.address_step = true;
-      console.log(this.step);
-    }
-  }
+  // previous() {
+  //   if (this.step == 1) {
+  //     return;
+  //   } else if (this.step == 2) {
+  //     this.step--;
+  //     this.personal_step = true;
+  //     this.address_step = false;
+  //     console.log(this.step);
+  //   } else if (this.step == 3) {
+  //     this.step--;
+  //     this.register_step = false;
+  //     this.address_step = true;
+  //     console.log(this.step);
+  //   }
+  // }
 
   goTo(step: number, details?: any) {
     console.log(details);
-    if (details!=null && details!= undefined)
+    if (details!=null && details != undefined)
     {
       if (details.invalid) {
         console.log(details.invalid);

@@ -61,9 +61,15 @@
 
         <label for="email">Email</label>
         <input type="email" id="email" formControlName="email" />
-        <div *ngIf="personal_step && personalDetails.controls.email.errors">
-          <span *ngIf="personal.email.touched && personal.email.invalid"
-            >Email is required</span
+        <div
+          *ngIf="
+            personal_step && personal.email.errors && personal.email.touched
+          "
+        >
+          <span *ngIf="personal.email.errors?.required">Email is required</span>
+          <span
+            *ngIf="personal.email.invalid && !personal.email.errors?.required"
+            >Email is invalid</span
           >
           <!-- <span *ngIf="personal.email.dirty && personal.email.invalid">Please enter a valid email address</span> -->
         </div>
