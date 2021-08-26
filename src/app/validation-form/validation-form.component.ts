@@ -156,7 +156,7 @@ export class ValidationFormComponent implements OnInit {
   //   }
   // }
 
-  goTo(step: number, details?: any) {
+  goTo(step: number, details?: FormGroup) {
     if (details != null && details != undefined) {
       if (details.invalid) {
         this.validateAllFormFields(details);
