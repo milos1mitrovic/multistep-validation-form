@@ -14,7 +14,7 @@ import {
 })
 export class ValidationFormComponent implements OnInit {
   @Output() onCloseForm = new EventEmitter<boolean>();
-  
+
   personalDetails!: FormGroup;
   addressDetails!: FormGroup;
   registerDetails!: FormGroup;
@@ -23,8 +23,6 @@ export class ValidationFormComponent implements OnInit {
   register_step = false;
   step = 1;
   formClosed: boolean = false;
-
-
 
   languages: string[] = ['Portugese', 'English'];
   countries: string[] = ['Brazil'];
@@ -181,7 +179,7 @@ export class ValidationFormComponent implements OnInit {
     });
   }
 
-  closeForm(){
+  closeForm() {
     this.onCloseForm.emit(this.formClosed);
   }
 }

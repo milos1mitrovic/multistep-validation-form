@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="col-md-12 col-md-offset-3">
+    <form [formGroup]="loginDetails" class="msform">
+      <fieldset>
+        <button (click)="closeForm()"></button>
+
+        <h2 class="fs-title">Welcome back</h2>
+
+        <label for="userName">Username</label>
+        <input
+          type="text"
+          id="userName"
+          formControlName="userName"
+          placeholder="Username"
+          [ngClass]="{
+            'is-invalid': login.userName.errors
+          }"
+        />
+        <div *ngIf="loginDetails.controls.password.errors">
+          <span
+            *ngIf="login.userName.errors?.required && login.userName.touched"
+            class="required"
+          >
+            First Name is required
+          </span>
+        </div>
+
+        <label for="password">Password</label>
+        <input type="text" id="lastname" formControlName="lastName" placeholder="Password" />
+        <div *ngIf="loginDetails.controls.password.errors">
+          <span
+            *ngIf="
+              login.password.errors?.required && login.password.touched
+            "
+          >
+            Last Name is required
+          </span>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</div>
