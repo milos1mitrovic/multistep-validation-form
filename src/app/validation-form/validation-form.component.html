@@ -1,0 +1,325 @@
+<div class="row">
+  <div class="col-md-12 col-md-offset-3">
+    <form [formGroup]="personalDetails" class="msform">
+      <!-- progressbar -->
+
+      <ul id="progressbar">
+        <li [ngClass]="step >= 1 ? 'active' : 'inactive'" (click)="goTo(1)">
+          Personal Details
+        </li>
+        <li
+          [ngClass]="step >= 2 ? 'active' : 'inactive'"
+          (click)="goTo(2, personalDetails)"
+        >
+          Address Details
+        </li>
+        <li
+          [ngClass]="step == 3 ? 'active' : 'inactive'"
+          (click)="goTo(3, addressDetails)"
+        >
+          Account Setup
+        </li>
+      </ul>
+
+      <!-- fieldsets -->
+
+      <!-- first fieldset -->
+
+      <fieldset *ngIf="step == 1">
+        <button (click)="closeForm()">close</button>
+
+        <h2 class="fs-title">Welcome</h2>
+
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          id="firstName"
+          formControlName="firstName"
+          [ngClass]="{
+            'is-invalid': personal_step && personal.firstName.errors
+          }"
+        />
+        <div *ngIf="personal_step && personalDetails.controls.firstName.errors">
+          <span
+            *ngIf="
+              personal.firstName.errors?.required && personal.firstName.touched
+            "
+            class="required"
+          >
+            First Name is required
+          </span>
+        </div>
+
+        <label for="lastname">Last name</label>
+        <input type="text" id="lastname" formControlName="lastName" />
+        <div *ngIf="personal_step && personalDetails.controls.lastName.errors">
+          <span
+            *ngIf="
+              personal.lastName.errors?.required && personal.lastName.touched
+            "
+          >
+            Last Name is required
+          </span>
+        </div>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" />
+        <div
+          *ngIf="
+            personal_step && personal.email.errors && personal.email.touched
+          "
+        >
+          <span *ngIf="personal.email.errors?.required">Email is required</span>
+          <span
+            *ngIf="personal.email.invalid && !personal.email.errors?.required"
+            >Email is invalid</span
+          >
+          <!-- <span *ngIf="personal.email.dirty && personal.email.invalid">Please enter a valid email address</span> -->
+        </div>
+
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          [ngClass]="{
+            'is-invalid': personal_step && personal.username.errors
+          }"
+        />
+        <div *ngIf="personal_step && personalDetails.controls.username.errors">
+          <span
+            *ngIf="
+              personal.username.errors?.required && personal.username.touched
+            "
+          >
+            Username is required
+          </span>
+        </div>
+
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          [ngClass]="{
+            'is-invalid': personal_step && personal.password.errors
+          }"
+        />
+        <div *ngIf="personal_step && personalDetails.controls.password.errors">
+          <span
+            *ngIf="
+              personal.password.errors?.required && personal.password.touched
+            "
+            >Password is required</span
+          >
+        </div>
+
+        <label for="confirmPass">Confirm password</label>
+        <input
+          type="password"
+          id="confirmPass"
+          formControlName="confirmPass"
+          [ngClass]="{
+            'is-invalid': personal_step && personal.confirmPass.errors
+          }"
+        />
+        <div
+          *ngIf="personal_step && personalDetails.controls.confirmPass.errors"
+        >
+          <span
+            *ngIf="
+              personal.confirmPass.errors?.required &&
+              personal.confirmPass.touched
+            "
+            class="alert"
+            >Confirm password is required</span
+          >
+        </div>
+        <input
+          (click)="next()"
+          type="button"
+          name="next"
+          class="next action-button"
+          value="Continue"
+        />
+      </fieldset>
+    </form>
+
+    <!-- second fieldset -->
+
+    <form [formGroup]="addressDetails" class="msform">
+      <fieldset *ngIf="step == 2">
+        <button>close</button>
+
+        <h2 class="fs-title">Address Details</h2>
+        <label for="language">Language</label>
+        <select
+          id="language"
+          name="language"
+          class="input-form-control"
+          formControlName="language"
+        >
+          <option *ngFor="let lang of languages" [ngValue]="lang" selected>
+            {{ lang }}
+          </option>
+        </select>
+        <div *ngIf="address_step && addressDetails.controls.language.errors">
+          <span *ngIf="address.language.errors?.required"
+            >Language is required</span
+          >
+        </div>
+        <label for="country">Country</label>
+        <select id="country" name="country" formControlName="country">
+          <option *ngFor="let country of countries" selected>
+            {{ country }}
+          </option>
+        </select>
+        <div *ngIf="address_step && addressDetails.controls.country.errors">
+          <span *ngIf="address.country.errors?.required">
+            Country is required
+          </span>
+        </div>
+
+        <label for="address">Address</label>
+        <input
+          type="text"
+          id="address"
+          formControlName="address"
+          [ngClass]="{
+            'is-invalid': address_step && address.address.errors
+          }"
+        />
+        <div *ngIf="address_step && addressDetails.controls.address.errors">
+          <span
+            *ngIf="address.address.errors?.required && address.address.touched"
+            class="required"
+          >
+            Address is required
+          </span>
+        </div>
+
+        <label for="city">City</label>
+        <input
+          type="text"
+          id="city"
+          formControlName="city"
+          [ngClass]="{
+            'is-invalid': address_step && address.city.errors
+          }"
+        />
+        <div *ngIf="address_step && addressDetails.controls.city.errors">
+          <span
+            *ngIf="address.city.errors?.required && address.city.touched"
+            class="required"
+          >
+            City is required
+          </span>
+        </div>
+
+        <label for="address">Zip</label>
+        <input
+          type="text"
+          id="zip"
+          formControlName="zip"
+          [ngClass]="{
+            'is-invalid': address_step && address.zip.errors
+          }"
+        />
+        <div *ngIf="address_step && addressDetails.controls.zip.errors">
+          <span
+            *ngIf="address.zip.errors?.required && address.zip.touched"
+            class="required"
+          >
+            Zip is required
+          </span>
+        </div>
+
+        <!-- <input
+            (click)="previous()"
+            type="button"
+            name="previous"
+            class="previous action-button-previous"
+            value="Previous"
+          /> -->
+        <input
+          (click)="next()"
+          type="button"
+          name="next"
+          class="next action-button"
+          value="Continue"
+        />
+      </fieldset>
+    </form>
+
+    <!-- third fieldset -->
+
+    <form [formGroup]="registerDetails" class="msform">
+      <fieldset *ngIf="step == 3">
+        <button>close</button>
+
+        <h2 class="fs-title">Register Details</h2>
+        <label for="taxpayerNumber">Taxpayer Number</label>
+        <input
+          type="text"
+          id="taxpayerNumber"
+          formControlName="taxpayerNumber"
+        />
+        <div
+          *ngIf="
+            register_step && registerDetails.controls.taxpayerNumber.errors
+          "
+        >
+          <span
+            *ngIf="
+              register.taxpayerNumber.errors?.required &&
+              register.taxpayerNumber.touched
+            "
+          >
+            Taxpayer number is required
+          </span>
+        </div>
+
+        <label for="birthDate">Birth Date</label>
+        <input type="date" id="birthDate" formControlName="birthDate" />
+        <div *ngIf="register_step && registerDetails.controls.birthDate.errors">
+          <span
+            *ngIf="
+              register.birthDate.errors?.required && register.birthDate.touched
+            "
+          >
+            BirthDate is required
+          </span>
+        </div>
+
+        <label for="phoneNumber">Phone Number</label>
+        <input type="text" id="phoneNumber" formControlName="phoneNumber" />
+        <div
+          *ngIf="register_step && registerDetails.controls.phoneNumber.errors"
+        >
+          <span
+            *ngIf="
+              register.phoneNumber.errors?.required &&
+              register.phoneNumber.touched
+            "
+          >
+            Phone Number is required
+          </span>
+        </div>
+        <!-- <input
+            (click)="previous()"
+            type="button"
+            name="previous"
+            class="previous action-button-previous"
+            value="Previous"
+          /> -->
+        <input
+          (click)="submit()"
+          type="submit"
+          name="submit"
+          class="submit action-button"
+          value="Submit"
+        />
+      </fieldset>
+    </form>
+  </div>
+</div>

@@ -3,9 +3,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
+import { ValidationFormComponent } from './validation-form/validation-form.component';
+import { BackdropComponent } from './backdrop/backdrop.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ValidationFormComponent, BackdropComponent],
   imports: [BrowserModule, ReactiveFormsModule, FormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
