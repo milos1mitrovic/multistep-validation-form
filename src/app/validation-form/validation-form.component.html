@@ -149,7 +149,7 @@
 
     <form [formGroup]="addressDetails" class="msform">
       <fieldset *ngIf="step == 2">
-        <button>close</button>
+        <button (click)="closeForm()"></button>
 
         <h2 class="fs-title">Address Details</h2>
         <label for="language">Language</label>
@@ -255,7 +255,7 @@
 
     <form [formGroup]="registerDetails" class="msform">
       <fieldset *ngIf="step == 3">
-        <button>close</button>
+        <button (click)="closeForm()"></button>
 
         <h2 class="fs-title">Register Details</h2>
         <label for="taxpayerNumber">Taxpayer Number</label>
