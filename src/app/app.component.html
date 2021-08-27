@@ -1,14 +1,17 @@
 <div class="buttons">
   <button (click)="onRegisterClick()">Register</button>
-  <button>Login</button>
+  <button data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button>
 </div>
 
 <app-validation-form
-  *ngIf="showForm"
+  *ngIf="showRegisterForm"
   (onCloseForm)="closeForm()"
 ></app-validation-form>
 
-<app-login-form></app-login-form>
+<app-login-form
+  *ngIf="showLoginForm"
+  (onCloseLoginForm)="closeLoginForm()"
+></app-login-form>
 <app-backdrop
   *ngIf="showBackdrop"
   (backdropClicked)="closeForm()"

@@ -14,18 +14,26 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit {
   showBackdrop = false;
-  showForm = false;
+  showRegisterForm = false;
+  showLoginForm = false;
 
   onRegisterClick() {
     this.showBackdrop = true;
-    this.showForm = true;
+    this.showRegisterForm = true;
+  }
+
+  onLoginClick() {
+    this.showLoginForm = true;
   }
 
   closeForm() {
-    this.showForm = false;
+    this.showRegisterForm = false;
     this.showBackdrop = false;
   }
-  
+
+  closeLoginForm() {
+    this.showLoginForm = false;
+  }
 
   ngOnInit() {}
 }

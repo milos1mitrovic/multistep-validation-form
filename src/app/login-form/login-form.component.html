@@ -1,8 +1,8 @@
-<div class="row">
-  <div class="col-md-12 col-md-offset-3">
+<!-- <div class="row">
+  <div class="col-md-12 col-md-offset-6">
     <form [formGroup]="loginDetails" class="msform">
       <fieldset>
-        <button (click)="closeForm()"></button>
+        <button (click)="closeLoginForm()"></button>
 
         <h2 class="fs-title">Welcome back</h2>
 
@@ -26,17 +26,117 @@
         </div>
 
         <label for="password">Password</label>
-        <input type="text" id="lastname" formControlName="lastName" placeholder="Password" />
+        <input
+          type="text"
+          id="lastname"
+          formControlName="password"
+          placeholder="Password"
+        />
         <div *ngIf="loginDetails.controls.password.errors">
           <span
-            *ngIf="
-              login.password.errors?.required && login.password.touched
-            "
+            *ngIf="login.password.errors?.required && login.password.touched"
           >
             Password is required
           </span>
         </div>
+        <input
+          type="button"
+          name="next"
+          class="next action-button"
+          value="Log in"
+        />
       </fieldset>
     </form>
+  </div>
+</div> -->
+<!-- Button trigger modal -->
+<button
+  type="button"
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  data-bs-target="#exampleModal"
+>
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="loginDetails" class="msform">
+          <fieldset>
+            <button (click)="closeLoginForm()"></button>
+
+            <h2 class="fs-title">Welcome back</h2>
+
+            <label for="userName">Username</label>
+            <input
+              type="text"
+              id="userName"
+              formControlName="userName"
+              placeholder="Username"
+              [ngClass]="{
+                'is-invalid': login.userName.errors
+              }"
+            />
+            <div *ngIf="loginDetails.controls.password.errors">
+              <span
+                *ngIf="
+                  login.userName.errors?.required && login.userName.touched
+                "
+                class="required"
+              >
+                Username is required
+              </span>
+            </div>
+
+            <label for="password">Password</label>
+            <input
+              type="text"
+              id="lastname"
+              formControlName="password"
+              placeholder="Password"
+            />
+            <div *ngIf="loginDetails.controls.password.errors">
+              <span
+                *ngIf="
+                  login.password.errors?.required && login.password.touched
+                "
+              >
+                Password is required
+              </span>
+            </div>
+            <input
+              type="button"
+              name="next"
+              class="next action-button"
+              value="Log in"
+            />
+          </fieldset>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
   </div>
 </div>
