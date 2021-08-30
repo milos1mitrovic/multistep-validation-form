@@ -1,11 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginFormComponent } from './login-form/login-form.component';
+import { ValidationFormComponent } from './validation-form/validation-form.component';
 
 @Component({
   selector: 'app-root',
@@ -20,10 +16,13 @@ export class AppComponent implements OnInit {
   onRegisterClick() {
     this.showBackdrop = true;
     this.showRegisterForm = true;
+    // this.dialog.open(ValidationFormComponent);
   }
 
   onLoginClick() {
+    this.showBackdrop = true;
     this.showLoginForm = true;
+    // this.dialog.open(LoginFormComponent);
   }
 
   closeForm() {
@@ -32,8 +31,11 @@ export class AppComponent implements OnInit {
   }
 
   closeLoginForm() {
+    this.showBackdrop = false;
     this.showLoginForm = false;
   }
+
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit() {}
 }

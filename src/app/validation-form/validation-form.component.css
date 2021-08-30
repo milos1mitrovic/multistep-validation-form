@@ -7,7 +7,7 @@
 }
 
 .msform fieldset {
-  background: #ffd200;
+  background: #ccc;
   border: 0 none;
   border-radius: 0px;
   box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
@@ -58,14 +58,14 @@
   width: 100%;
   background: #282828;
   font-weight: bold;
-  color: #ffd200;
+  color: white;
   text-transform: uppercase;
   border: 1px solid #49ace6;
   border-radius: 5px;
   cursor: pointer;
   padding: 5px 10px;
   /* margin: 10px 5px; */
-  font-family: "Roboto Condensed";
+  font-family: inherit, "Roboto Condensed";
   font-size: 16px;
   font-weight: lighter;
   margin: 10px auto;
@@ -194,12 +194,12 @@
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before {
   background: #282828;
-  color: #ffd200;
+  color: white;
 }
 
 #progressbar li.active:after,
 #progressbar li.inactive:before {
-  background: #ffd200;
+  background: white;
   border: 1px solid #282828;
   color: #282828;
 }
@@ -225,43 +225,43 @@ fieldset {
 @-webkit-keyframes slidein {
   from {
     margin-right: 100%;
-    /* width: 300%; */
+    width: 300%;
   }
   to {
     margin-right: 0%;
-    /* width: 100%; */
+    width: 100%;
   }
 }
 
 @-moz-keyframes slidein {
   from {
     margin-left: 100%;
-    /* width: 300%; */
+    width: 300%;
   }
   to {
     margin-left: 0%;
-    /* width: 100%; */
+    width: 100%;
   }
 }
 @-o-keyframes slidein {
   from {
     margin-left: 100%;
-    /* width: 300%; */
+    width: 300%;
   }
 
   to {
     margin-left: 0%;
-    /* width: 100%; */
+    width: 100%;
   }
 }
 @keyframes slidein {
   from {
     margin-left: 100%;
-    /* width: 300%; */
+    width: 300%;
   }
 
   to {
     margin-left: 0%;
-    /* width: 100%; */
+    width: 100%;
   }
 }

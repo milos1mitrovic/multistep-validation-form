@@ -1,0 +1,140 @@
+.msform {
+  /* text-align: center; */
+  position: relative;
+  /*margin-top: 30px; */
+  z-index: 500;
+}
+
+.msform fieldset {
+  background: #ccc;
+  border: 0 none;
+  border-radius: 0px;
+  box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  padding: 60px 80px;
+  box-sizing: border-box;
+  /* width: 60%; */
+  width: 600px;
+  margin: 0 auto;
+  /*stacking fieldsets above each other*/
+  position: relative;
+  color: #282828;
+}
+
+/*Hide all except first fieldset*/
+.msform fieldset:not(:first-of-type) {
+  display: none;
+}
+
+/*inputs*/
+.msform input,
+.msform select {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: rgb(133, 130, 130);
+  width: 100%;
+  box-sizing: border-box;
+  line-height: 1.42857143;
+  font-size: 14px;
+}
+
+.msform input:focus,
+.msform select:focus {
+  -moz-box-shadow: none !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border: 1px solid rgb(148, 143, 143);
+  outline-width: 0;
+  transition: All 0.5s ease-in;
+  -webkit-transition: All 0.5s ease-in;
+  -moz-transition: All 0.5s ease-in;
+  -o-transition: All 0.5s ease-in;
+}
+
+/*buttons*/
+
+.msform .action-button {
+  width: 100%;
+  background: #282828;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  border: 1px solid rgb(133, 130, 130);
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 5px 10px;
+  /* margin: 10px 5px; */
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: lighter;
+  margin: 10px auto;
+  display: block;
+}
+
+.msform .action-button:hover,
+.msform .action-button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px rgb(133, 130, 130);
+  border: 1px solid #282828;
+
+  color: white;
+}
+
+.msform .action-button-previous {
+  width: 100px;
+  background: #c5c5f1;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 25px;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 10px 5px;
+}
+
+.msform .action-button-previous:hover,
+.msform .action-button-previous:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #c5c5f1;
+}
+
+.msform span {
+  color: #c0392b;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.msform label {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.msform button {
+  background-image: url("../images/x.png");
+  padding: 0;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  float: right;
+  border: none;
+  cursor: pointer;
+}
+
+/*headings*/
+.fs-title {
+  font-size: 34px;
+  text-transform: uppercase;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  font-weight: lighter;
+}
+
+.fs-subtitle {
+  font-weight: normal;
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+mat-dialog-container {
+  padding: 0;
+}

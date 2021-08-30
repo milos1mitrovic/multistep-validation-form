@@ -1,66 +1,61 @@
-<!-- <div class="row">
-  <div class="col-md-12 col-md-offset-6">
-    <form [formGroup]="loginDetails" class="msform">
-      <fieldset>
-        <button (click)="closeLoginForm()"></button>
+<form [formGroup]="loginDetails" class="msform">
+  <fieldset>
+    <button (click)="closeLoginForm()"></button>
 
-        <h2 class="fs-title">Welcome back</h2>
+    <h2 class="fs-title">Welcome back</h2>
 
-        <label for="userName">Username</label>
-        <input
-          type="text"
-          id="userName"
-          formControlName="userName"
-          placeholder="Username"
-          [ngClass]="{
-            'is-invalid': login.userName.errors
-          }"
-        />
-        <div *ngIf="loginDetails.controls.password.errors">
-          <span
-            *ngIf="login.userName.errors?.required && login.userName.touched"
-            class="required"
-          >
-            Username is required
-          </span>
-        </div>
+    <label for="userName">Username</label>
+    <input
+      type="text"
+      id="userName"
+      formControlName="userName"
+      placeholder="Username"
+      [ngClass]="{
+        'is-invalid': login.userName.errors
+      }"
+    />
+    <div *ngIf="loginDetails.controls.password.errors">
+      <span
+        *ngIf="login.userName.errors?.required && login.userName.touched"
+        class="required"
+      >
+        Username is required
+      </span>
+    </div>
 
-        <label for="password">Password</label>
-        <input
-          type="text"
-          id="lastname"
-          formControlName="password"
-          placeholder="Password"
-        />
-        <div *ngIf="loginDetails.controls.password.errors">
-          <span
-            *ngIf="login.password.errors?.required && login.password.touched"
-          >
-            Password is required
-          </span>
-        </div>
-        <input
-          type="button"
-          name="next"
-          class="next action-button"
-          value="Log in"
-        />
-      </fieldset>
-    </form>
-  </div>
-</div> -->
+    <label for="password">Password</label>
+    <input
+      type="text"
+      id="lastname"
+      formControlName="password"
+      placeholder="Password"
+    />
+    <div *ngIf="loginDetails.controls.password.errors">
+      <span *ngIf="login.password.errors?.required && login.password.touched">
+        Password is required
+      </span>
+    </div>
+    <input
+      type="button"
+      name="next"
+      class="next action-button"
+      value="Log in"
+    />
+  </fieldset>
+</form>
+
 <!-- Button trigger modal -->
-<button
+<!-- <button
   type="button"
   class="btn btn-primary"
   data-bs-toggle="modal"
   data-bs-target="#exampleModal"
 >
   Launch demo modal
-</button>
+</button> -->
 
 <!-- Modal -->
-<div
+<!-- <div
   class="modal fade"
   id="exampleModal"
   tabindex="-1"
@@ -139,4 +134,4 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
